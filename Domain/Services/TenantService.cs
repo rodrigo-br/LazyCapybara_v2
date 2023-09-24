@@ -49,5 +49,44 @@ namespace Domain.Services
                 CheckOut = null
             };
         }
+
+        public void UpdateTenant(Tenant tenant, Tenant updatedTenantValues)
+        {
+            updatedTenantValues.Validate();
+            tenant.FirstName = updatedTenantValues.FirstName;
+            tenant.LastName = updatedTenantValues.LastName;
+            tenant.PhoneNumber = updatedTenantValues.PhoneNumber;
+            tenant.Email = updatedTenantValues.Email;
+            tenant.PaymantDay = updatedTenantValues.PaymantDay;
+            tenant.CheckOut = updatedTenantValues.CheckOut;
+            tenant.CheckIn = updatedTenantValues.CheckIn;
+        }
+
+        public bool RemoveTenantById(IEnumerable<Tenant> tenants, int id)
+        {
+            if (tenants == null || tenants.Count == 0)
+            {
+                return false;
+            }
+
+            Tenant tenantToRemove = tenants.FirstOrDefault(r => r.Id == id);
+
+            if (tenantToRemove == null)
+            {
+                return false;
+            }
+
+            return tenant.Remove(tenantToRemove);
+        }
+
+        public bool PopTenant(Stack<Tenant> tenants)
+        {
+            if (tenants == null || tenants.Count == 0)
+            {
+                return false;
+            }
+            tenants.Pop();
+            return true;
+        }
     }
 }
