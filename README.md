@@ -36,30 +36,30 @@ A LazyCapybara v2 visa não só solucionar todos estes problemas, como também traz
 
 ## :construction: Em desenvolvimento
 
-- [x]  Modelagem inicial das entidades Quarto e Inquilino
+:ballot_box_with_check: ~~Modelagem inicial das entidades Quarto e Inquilino~~
 
-- [x]  Server Side Validations para os modelos iniciais
+:ballot_box_with_check: ~~Server Side Validations para os modelos iniciais~~
 
-- [x]  Serviços de manipulação de objetos Quarto e Inquilino
+:ballot_box_with_check: ~~Serviços de manipulação de objetos Quarto e Inquilino~~
 
-- [x]  Formulários iniciais para testes de criação e atribuição de valores
+:ballot_box_with_check: ~~Formulários iniciais para testes de criação e atribuição de valores~~
 
-- [x]  Organização inicial do projeto
+:ballot_box_with_check: ~~Organização inicial do projeto~~
 
-- [x] DTOs para Quarto e Inquilino
+:ballot_box_with_check: ~~DTOs para Quarto e Inquilino~~
 
-- [x] Profiles de mapeamento entre DTOs e Models
+:ballot_box_with_check: ~~Profiles de mapeamento entre DTOs e Models~~
 
-- [ ] Interfaces de serviços permitindo acesso aos Models pela aplicação principal
+:white_square_button: Interfaces de serviços permitindo acesso aos Models pela aplicação principal
 
-- [ ] Remover referência ao Models da aplicação principal
+:white_square_button: Remover referência ao Models da aplicação principal
 
-- [ ] Montar testes unitários com boa cobertura
+:white_square_button: Montar testes unitários com boa cobertura
 
-- [ ] Modelar banco de dados
+:white_square_button: Modelar banco de dados
 
-- [ ] Conectar com banco de dados
+:white_square_button: Conectar com banco de dados
 
-- [ ] Implementar métodos dos repositórios para Quarto e Inquilino
+:white_square_button: Implementar métodos dos repositórios para Quarto e Inquilino
 
-- [ ] :soon: (...) 
+:white_square_button: :soon: (...) 
