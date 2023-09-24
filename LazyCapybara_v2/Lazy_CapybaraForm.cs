@@ -4,6 +4,7 @@ namespace LazyCapybara_v2
     using Domain.Models;
     using Domain.Services;
     using LazyCapybaraLibrary.Services;
+    using LazyCapybara_v2.Security.Dto;
 
     public partial class Lazy_CapybaraForm : Form
     {
@@ -23,6 +24,14 @@ namespace LazyCapybara_v2
             rooms[3].Validate();
             rooms[4].Validate();
             rooms[5].Validate();
+            var roomService = new RoomService(new ClassValidationsService());
+            var newRoom = roomService.CreateRoom(1, 500.0M, true);
+            newRoom.EnergyMetering.Push(100.0M);
+            newRoom.CurrentTenants = rooms[0].CurrentTenants;
+            roomService.UpdateRoom(rooms[0], newRoom);
+            var mapper = Program.GetYourMapper();
+            var roomdto = mapper.Map<RoomDto>(rooms[0]);
+            var tenantdto = mapper.Map<TenantDto>(rooms[0].CurrentTenants.FirstOrDefault());
             InitializeComponent();
             Label_Title.Text = "Casa 06";
             Label_EnergyBill.Text = "Valor da conta de luz";
@@ -74,14 +83,14 @@ namespace LazyCapybara_v2
 
         private string MountRoomDescriptionString(Room room)
         {
-            Tenant tenant = room.CurrentTenants.First();
+            Tenant tenant = room.CurrentTenants.FirstOrDefault();
             return $"{tenant.FirstName} {tenant.LastName}, {(room.CurrentTenants.Count > 1 ? "divide" : "solo")}, entrada {tenant.CheckIn}, última leitura {room.EnergyMetering.FirstOrDefault()}";
         }
 
         private Room MockRoom(int id, string name)
         {
             var room = new RoomService(new ClassValidationsService()).CreateRoom(id, 450, false);
-            room.CurrentTenants.Push(new TenantService(new ClassValidationsService()).CreateEmptyTenant());
+            room.CurrentTenants.Push(new TenantService(new ClassValidationsService()).CreateNewTenant(name, "dos caminhões", "1196751251", "larissinhadejesus@gmail.com", 15, null));
             return room;
         }
     }

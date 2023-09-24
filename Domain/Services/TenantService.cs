@@ -62,9 +62,9 @@ namespace Domain.Services
             tenant.CheckIn = updatedTenantValues.CheckIn;
         }
 
-        public bool RemoveTenantById(IEnumerable<Tenant> tenants, int id)
+        public bool RemoveTenantById(Stack<Tenant> tenants, Guid id)
         {
-            if (tenants == null || tenants.Count == 0)
+            if (tenants == null || tenants.Count() == 0)
             {
                 return false;
             }
@@ -76,7 +76,15 @@ namespace Domain.Services
                 return false;
             }
 
-            return tenant.Remove(tenantToRemove);
+            List<Tenant> tenantList = tenants.ToList();
+            tenantList.Remove(tenantToRemove);
+            tenantList.Reverse();
+            tenants.Clear();
+            foreach (var tenant in tenantList)
+            {
+                tenants.Push(tenant);
+            }
+            return true;
         }
 
         public bool PopTenant(Stack<Tenant> tenants)

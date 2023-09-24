@@ -29,8 +29,8 @@ namespace LazyCapybara_v2.Forms.Edit
                 TextBox_Email.Text = tenant.Email;
                 TextBox_PhoneNumber.Text = tenant.PhoneNumber;
                 TextBox_PaymentDay.Text = tenant.PaymantDay.ToString();
-                TextBox_ShareRoom.Text = (room.CurrentTenants.Count > 1 ? "Divide quarto" : "Não divide quarto");
-                TextBox_LastMetering.Text = room.EnergyMetering?.First().ToString();
+                TextBox_ShareRoom.Text = (room.CurrentTenants?.Count > 1 ? "Divide quarto" : "Não divide quarto");
+                TextBox_LastMetering.Text = room.EnergyMetering?.FirstOrDefault().ToString();
             }
         }
     }
