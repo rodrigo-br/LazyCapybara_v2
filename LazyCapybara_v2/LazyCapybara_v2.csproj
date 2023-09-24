@@ -13,4 +13,9 @@
     <Folder Include="Forms\Save\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\LazyCapybaraLibrary\LazyCapybaraLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

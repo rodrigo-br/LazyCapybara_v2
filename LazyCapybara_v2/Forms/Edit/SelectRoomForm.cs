@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace LazyCapybara_v2.Forms.Edit
+﻿namespace LazyCapybara_v2.Forms.Edit
 {
-    using Domain.Model;
+    using Domain.Models;
 
     public partial class SelectRoomForm : Form
     {
@@ -51,7 +41,12 @@ namespace LazyCapybara_v2.Forms.Edit
 
         private void Button_ConfirmSelectedRoom_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(selectedRoom.CurrentTenants.First().FirstName);
+            DialogResult result = MessageBox.Show($"Confirma intenção de editar o quarto {selectedRoom.Id.ToString()}?", "Editar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                EditRoomForm editRoomForm = new EditRoomForm(selectedRoom);
+                editRoomForm.Show();
+            }
         }
     }
 }
